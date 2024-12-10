@@ -1,0 +1,51 @@
+﻿@using Syrna.PrivateMessaging.Localization
+@using Syrna.PrivateMessaging.PrivateMessageNotifications
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.Application.Dtos
+@inject IHtmlLocalizer<PrivateMessagingResource> L
+@inject IPrivateMessageNotificationAppService NotificationAppService
+@{
+    var result = await NotificationAppService.GetListAsync(new PagedResultRequestDto());
+
+    var count = result.TotalCount;
+    
+    var title = count > 0 ? L["PmNotificationDropdownTitle", count] : L["PmNotificationDropdownTitleEmpty"];
+}
+<div class="dropdown" id="pmNotification">
+    <a class="nav-link dropdown-toggle" href="#" role="button" id="pmNotificationLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @title
+    </a>
+    
+    <div class="pmNotification-dropdown-menu dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="pmNotificationLink">
+        <div class="dropdown-pm">
+            <table class="pmNotification-table">
+                @if (result.Items.Count > 0)
+                {
+                    foreach (var notification in result.Items)
+                    {
+                        <tr class="pmNotification-row">
+                            <td class="pmNotification-data">
+                                <a class="pmNotification-data-text" pmid="@notification.PrivateMessageId" notificationId="@notification.Id">@notification.TitlePreview...</a>
+                            </td>
+                            <td class="pmNotification-action">
+                                <a class="pmNotification-action-hide" pmid="@notification.PrivateMessageId" notificationId="@notification.Id">@L["PmNotificationHide"]</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="pmNotification-row">
+                        <td class="pmNotification-data">
+                            <a class="pmNotification-data-empty">@L["PmNotificationEmpty"]</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <div class="pmNotification-footer">
+                <div class="pmNotification-action" id="pmNotificationShowMore"><a>@L["PmNotificationShowMore"]</a></div>
+                <div class="pmNotification-action" id="pmNotificationHideThese"><a>@L["PmNotificationHideThese"]</a></div>
+            </div>
+        </div>
+    </div>
+</div>

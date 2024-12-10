@@ -1,0 +1,57 @@
+@page
+@namespace Syrna.PrivateMessaging.Web.Pages.PrivateMessaging.PrivateMessages.PrivateMessage
+@using Syrna.PrivateMessaging.Authorization
+@using Syrna.PrivateMessaging.Localization
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@model InboxModel
+@inject IPageLayout PageLayout
+@inject IAuthorizationService Authorization
+@inject IHtmlLocalizer<PrivateMessagingResource> L
+@section scripts
+{
+    <abp-script src="/Pages/PrivateMessaging/PrivateMessages/PrivateMessage/inbox.js" />
+}
+@section styles
+{
+    <abp-style src="/Pages/PrivateMessaging/PrivateMessages/PrivateMessage/common.css"/>
+}
+@{
+    PageLayout.Content.Title = L["PrivateMessageInbox"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:PrivateMessage"].Value);
+}
+
+<abp-card>
+    <abp-card-header>
+        <abp-row>
+            <abp-column size-md="_6">
+                <abp-card-title>@L["PrivateMessageInbox"]</abp-card-title>
+            </abp-column>
+            <abp-column size-md="_6" class="text-end">
+                <abp-button id="OutboxButton"
+                            text="@L["PrivateMessageOutbox"].Value"
+                            button-type="Secondary" />
+                @if (await Authorization.IsGrantedAsync(PrivateMessagingPermissions.PrivateMessages.Create))
+                {
+                    <abp-button id="NewPrivateMessageButton"
+                                text="@L["CreatePrivateMessage"].Value"
+                                icon="plus"
+                                button-type="Primary" />
+                }
+            </abp-column>
+        </abp-row>
+    </abp-card-header>
+    <abp-card-body>
+        <abp-table striped-rows="true" id="PrivateMessageTable" class="nowrap">
+            <thead>
+            <tr>
+                <th>@L["Actions"]</th>
+                <th>@L["PrivateMessageFromUserName"]</th>
+                <th>@L["PrivateMessageTitle"]</th>
+                <th>@L["PrivateMessageCreationTime"]</th>
+            </tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

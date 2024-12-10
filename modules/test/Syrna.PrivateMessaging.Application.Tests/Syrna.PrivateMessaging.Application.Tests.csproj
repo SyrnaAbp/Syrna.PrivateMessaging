@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Syrna.PrivateMessaging</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Syrna.PrivateMessaging.Application\Syrna.PrivateMessaging.Application.csproj" />
+    <ProjectReference Include="..\Syrna.PrivateMessaging.Domain.Tests\Syrna.PrivateMessaging.Domain.Tests.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+  </ItemGroup>
+
+</Project>
