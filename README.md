@@ -10,7 +10,7 @@ An abp application module that allows users to send private messages to each oth
 
 ## Installation
 
-1. Install the following NuGet packages. ([see how](https://github.com/Dolunay/SyrnaAbpGuide/blob/master/docs/How-To.md#add-nuget-packages))
+1. Install the following NuGet packages. ([see how](https://github.com/SyrnaAbp/SyrnaAbpGuide/blob/master/docs/How-To.md#add-nuget-packages))
 
     * Syrna.PrivateMessaging.Application
     * Syrna.PrivateMessaging.Application.Contracts
