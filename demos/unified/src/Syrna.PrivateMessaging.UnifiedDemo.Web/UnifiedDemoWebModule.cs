@@ -23,7 +23,7 @@ namespace Syrna.PrivateMessaging.UnifiedDemo.Web
 
     [DependsOn(typeof(AbpAccountWebModule))]
     [DependsOn(typeof(AbpIdentityWebModule))]
-    [DependsOn(typeof(AbpAccountWebIdentityServerModule))]
+    [DependsOn(typeof(AbpAccountWebOpenIddictModule))]
 
     [DependsOn(typeof(AbpSettingManagementWebModule))]
     [DependsOn(typeof(AbpFeatureManagementWebModule))]

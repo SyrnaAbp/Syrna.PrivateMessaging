@@ -17,7 +17,7 @@
 		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" />
 		<PackageReference Include="Volo.Abp.Identity.Web" />
 		<PackageReference Include="Volo.Abp.Account.Web" />
-		<PackageReference Include="Volo.Abp.Account.Web.IdentityServer" />
+		<PackageReference Include="Volo.Abp.Account.Web.OpenIddict" />
 		<PackageReference Include="Volo.Abp.SettingManagement.Web" />
 		<PackageReference Include="Volo.Abp.FeatureManagement.Web" />
 		<PackageReference Include="Volo.Abp.TenantManagement.Web" />

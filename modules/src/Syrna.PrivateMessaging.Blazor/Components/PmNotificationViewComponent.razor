@@ -1,0 +1,52 @@
+﻿@using Syrna.PrivateMessaging.Blazor.Pages.PrivateMessaging.PrivateMessages
+@using Syrna.PrivateMessaging.Localization
+@using Microsoft.Extensions.Localization
+@using Microsoft.JSInterop
+@using Syrna.PrivateMessaging.PrivateMessageNotifications
+@using Syrna.PrivateMessaging.PrivateMessages
+@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+@inject NavigationManager Navigation
+@inject IJSRuntime JsRuntime
+@inject IPrivateMessageNotificationAppService NotificationAppService
+
+<Dropdown RightAligned="true">
+    <DropdownToggle Color="Color.Default">@Title</DropdownToggle>
+    <DropdownMenu>
+        <Table>
+            @if (Messages.Items.Count > 0)
+            {
+                @foreach (var notification in Messages.Items)
+                {
+                    <TableRow>
+                        <TableRowCell>
+                            <Button Clicked="@(() => OpenDetailsModalAsync(notification.PrivateMessageId))">@notification.TitlePreview...</Button>
+                        </TableRowCell>
+                        <TableRowCell>
+                            <Button Clicked="@(() => NotificationHideAsync(notification.Id))">@L["PmNotificationHide"]</Button>
+                        </TableRowCell>
+                    </TableRow>
+                }
+            }
+            else
+            {
+                <TableRow>
+                    <TableRowCell>
+                        <a class="pmNotification-data-empty">@L["PmNotificationEmpty"]</a>
+                    </TableRowCell>
+                </TableRow>
+            }
+        </Table>
+        <DropdownDivider />
+        <DropdownItem Clicked="@(() => NotificationShowMoreAsync())">@L["PmNotificationShowMore"]</DropdownItem>
+        <DropdownItem Clicked="@(() => NotificationHideTheseAsync())">@L["PmNotificationHideThese"]</DropdownItem>
+        <DropdownItem Clicked="@(() => OpenCreateModalAsync())">@L["NewPrivateMessage"]</DropdownItem>
+    </DropdownMenu>
+</Dropdown>
+@if (HasCreatePermission)
+{
+    <CreateModalComponent @ref="CreateModalComponentRef" Saved="NewMessageSaved" />
+}
+@if (HasDetailsPermission)
+{
+    <DetailsModalComponent @ref="DetailsModalComponentRef" Saved="NewMessageSaved" />
+}

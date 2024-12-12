@@ -11,7 +11,7 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         
         Task<long> CountAsync(Guid userId, bool unreadOnly = false);
 
-        Task<IReadOnlyList<PrivateMessage>> GetListAsync(Guid userId, int skipCount, int maxResultCount,
+        Task<IReadOnlyList<PrivateMessage>> GetListAsync(Guid userId, int skipCount, int maxResultCount, string sorting,
             bool unreadOnly = false);
 
         Task DeleteAsync(PrivateMessage privateMessage);

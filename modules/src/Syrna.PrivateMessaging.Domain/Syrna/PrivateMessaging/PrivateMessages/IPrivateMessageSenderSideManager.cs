@@ -12,7 +12,7 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         Task<long> CountAsync(Guid userId);
         
         Task<IReadOnlyList<PrivateMessage>>
-            GetListAsync(Guid userId, int skipCount, int maxResultCount);
+            GetListAsync(Guid userId, int skipCount, int maxResultCount, string sorting);
 
         Task<PrivateMessage> CreateAsync(
             [CanBeNull] IUserData fromUser,

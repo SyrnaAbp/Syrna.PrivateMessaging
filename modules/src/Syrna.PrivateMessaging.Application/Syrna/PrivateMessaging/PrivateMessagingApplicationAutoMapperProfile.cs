@@ -17,7 +17,7 @@ namespace Syrna.PrivateMessaging
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
             CreateMap<PrivateMessage, PrivateMessageDto>();
-            CreateMap<CreateUpdatePrivateMessageDto, PrivateMessage>(MemberList.Source);
+            CreateMap<CreateOrUpdatePrivateMessageDto, PrivateMessage>(MemberList.Source);
             CreateMap<PrivateMessageNotification, PrivateMessageNotificationDto>();
             CreateMap<IUserData, PmUserDto>();
         }

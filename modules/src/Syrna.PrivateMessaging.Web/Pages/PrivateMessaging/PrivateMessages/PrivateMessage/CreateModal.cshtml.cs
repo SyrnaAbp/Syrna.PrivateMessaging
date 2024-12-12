@@ -2,7 +2,6 @@ using System;
 using System.Threading.Tasks;
 using Syrna.PrivateMessaging.PrivateMessages;
 using Syrna.PrivateMessaging.PrivateMessages.Dtos;
-using Syrna.PrivateMessaging.Web.Pages.PrivateMessaging.PrivateMessages.PrivateMessage.InfoModels;
 using Microsoft.AspNetCore.Mvc;
 using CreatePrivateMessageInfoModel = Syrna.PrivateMessaging.Web.Pages.PrivateMessaging.PrivateMessages.PrivateMessage.InfoModels.CreatePrivateMessageInfoModel;
 
@@ -30,7 +29,7 @@ namespace Syrna.PrivateMessaging.Web.Pages.PrivateMessaging.PrivateMessages.Priv
         public virtual async Task<IActionResult> OnPostAsync()
         {
             await _service.CreateAsync(
-                ObjectMapper.Map<CreatePrivateMessageInfoModel, CreateUpdatePrivateMessageDto>(PrivateMessage));
+                ObjectMapper.Map<CreatePrivateMessageInfoModel, CreatePrivateMessageDto>(PrivateMessage));
             
             return NoContent();
         }

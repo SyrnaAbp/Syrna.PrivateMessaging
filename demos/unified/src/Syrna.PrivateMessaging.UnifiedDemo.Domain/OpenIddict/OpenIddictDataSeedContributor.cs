@@ -58,13 +58,13 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
 
     private async Task CreateScopesAsync()
     {
-        if (await _openIddictScopeRepository.FindByNameAsync("DynamicMenu") == null)
+        if (await _openIddictScopeRepository.FindByNameAsync("PrivateMessaging") == null)
         {
             await _scopeManager.CreateAsync(new OpenIddictScopeDescriptor
             {
-                Name = "DynamicMenu",
-                DisplayName = "DynamicMenu API",
-                Resources = { "DynamicMenu" }
+                Name = "PrivateMessaging",
+                DisplayName = "PrivateMessaging API",
+                Resources = { "PrivateMessaging" }
             });
         }
     }
@@ -78,25 +78,25 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
             OpenIddictConstants.Permissions.Scopes.Phone,
             OpenIddictConstants.Permissions.Scopes.Profile,
             OpenIddictConstants.Permissions.Scopes.Roles,
-            "DynamicMenu"
+            "PrivateMessaging"
         };
 
         var configurationSection = _configuration.GetSection("OpenIddict:Applications");
 
         //Web Client
-        var webClientId = configurationSection["DynamicMenu_Web:ClientId"];
+        var webClientId = configurationSection["PrivateMessaging_Web:ClientId"];
         if (!webClientId.IsNullOrWhiteSpace())
         {
-            var webClientRootUrl = configurationSection["DynamicMenu_Web:RootUrl"]!.EnsureEndsWith('/');
+            var webClientRootUrl = configurationSection["PrivateMessaging_Web:RootUrl"]!.EnsureEndsWith('/');
 
-            /* DynamicMenu_Web client is only needed if you created a tiered
+            /* PrivateMessaging_Web client is only needed if you created a tiered
              * solution. Otherwise, you can delete this client. */
             await CreateApplicationAsync(
                 name: webClientId!,
                 type: OpenIddictConstants.ClientTypes.Confidential,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
                 displayName: "Web Application",
-                secret: configurationSection["DynamicMenu_Web:ClientSecret"] ?? "1q2w3e*",
+                secret: configurationSection["PrivateMessaging_Web:ClientSecret"] ?? "1q2w3e*",
                 grantTypes: [OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit],
                 scopes: commonScopes,
                 redirectUri: $"{webClientRootUrl}signin-oidc",
@@ -106,10 +106,10 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         //Console Test / Angular Client
-        var consoleAndAngularClientId = configurationSection["DynamicMenu_App:ClientId"];
+        var consoleAndAngularClientId = configurationSection["PrivateMessaging_App:ClientId"];
         if (!consoleAndAngularClientId.IsNullOrWhiteSpace())
         {
-            var consoleAndAngularClientRootUrl = configurationSection["DynamicMenu_App:RootUrl"]?.TrimEnd('/');
+            var consoleAndAngularClientRootUrl = configurationSection["PrivateMessaging_App:RootUrl"]?.TrimEnd('/');
             await CreateApplicationAsync(
                 name: consoleAndAngularClientId!,
                 type: OpenIddictConstants.ClientTypes.Public,
@@ -131,10 +131,10 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         // Blazor Client
-        var blazorClientId = configurationSection["DynamicMenu_Blazor:ClientId"];
+        var blazorClientId = configurationSection["PrivateMessaging_Blazor:ClientId"];
         if (!blazorClientId.IsNullOrWhiteSpace())
         {
-            var blazorRootUrl = configurationSection["DynamicMenu_Blazor:RootUrl"]?.TrimEnd('/');
+            var blazorRootUrl = configurationSection["PrivateMessaging_Blazor:RootUrl"]?.TrimEnd('/');
 
             await CreateApplicationAsync(
                 name: blazorClientId!,
@@ -151,17 +151,17 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         // Blazor Server Tiered Client
-        var blazorServerTieredClientId = configurationSection["DynamicMenu_BlazorServerTiered:ClientId"];
+        var blazorServerTieredClientId = configurationSection["PrivateMessaging_BlazorServerTiered:ClientId"];
         if (!blazorServerTieredClientId.IsNullOrWhiteSpace())
         {
-            var blazorServerTieredRootUrl = configurationSection["DynamicMenu_BlazorServerTiered:RootUrl"]!.EnsureEndsWith('/');
+            var blazorServerTieredRootUrl = configurationSection["PrivateMessaging_BlazorServerTiered:RootUrl"]!.EnsureEndsWith('/');
 
             await CreateApplicationAsync(
                 name: blazorServerTieredClientId!,
                 type: OpenIddictConstants.ClientTypes.Confidential,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
                 displayName: "Blazor Server Application",
-                secret: configurationSection["DynamicMenu_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*",
+                secret: configurationSection["PrivateMessaging_BlazorServerTiered:ClientSecret"] ?? "1q2w3e*",
                 grantTypes: [OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit],
                 scopes: commonScopes,
                 redirectUri: $"{blazorServerTieredRootUrl}signin-oidc",
@@ -170,17 +170,17 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
             );
         }
         // Blazor WebApp Tiered Client
-        var blazorWebAppTieredClientId = configurationSection["DynamicMenu_BlazorWebAppTiered:ClientId"];
+        var blazorWebAppTieredClientId = configurationSection["PrivateMessaging_BlazorWebAppTiered:ClientId"];
         if (!blazorWebAppTieredClientId.IsNullOrWhiteSpace())
         {
-            var blazorWebAppTieredRootUrl = configurationSection["DynamicMenu_BlazorWebAppTiered:RootUrl"]!.EnsureEndsWith('/');
+            var blazorWebAppTieredRootUrl = configurationSection["PrivateMessaging_BlazorWebAppTiered:RootUrl"]!.EnsureEndsWith('/');
 
             await CreateApplicationAsync(
                 name: blazorWebAppTieredClientId!,
                 type: OpenIddictConstants.ClientTypes.Confidential,
                 consentType: OpenIddictConstants.ConsentTypes.Implicit,
                 displayName: "Blazor WebApp Tiered Application",
-                secret: configurationSection["DynamicMenu_BlazorWebAppTiered:ClientSecret"] ?? "1q2w3e*",
+                secret: configurationSection["PrivateMessaging_BlazorWebAppTiered:ClientSecret"] ?? "1q2w3e*",
                 grantTypes: [OpenIddictConstants.GrantTypes.AuthorizationCode, OpenIddictConstants.GrantTypes.Implicit],
                 scopes: commonScopes,
                 redirectUri: $"{blazorWebAppTieredRootUrl}authentication/login-callback",
@@ -190,10 +190,10 @@ public class OpenIddictDataSeedContributor : IDataSeedContributor, ITransientDep
         }
 
         // Swagger Client
-        var swaggerClientId = configurationSection["DynamicMenu_Swagger:ClientId"];
+        var swaggerClientId = configurationSection["PrivateMessaging_Swagger:ClientId"];
         if (!swaggerClientId.IsNullOrWhiteSpace())
         {
-            var swaggerRootUrl = configurationSection["DynamicMenu_Swagger:RootUrl"]?.TrimEnd('/');
+            var swaggerRootUrl = configurationSection["PrivateMessaging_Swagger:RootUrl"]?.TrimEnd('/');
 
             await CreateApplicationAsync(
                 name: swaggerClientId!,

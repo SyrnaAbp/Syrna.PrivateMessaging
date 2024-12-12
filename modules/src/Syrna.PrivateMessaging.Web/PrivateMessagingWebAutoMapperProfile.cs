@@ -12,9 +12,9 @@ namespace Syrna.PrivateMessaging.Web
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
-            CreateMap<PrivateMessageDto, CreateUpdatePrivateMessageDto>();
+            CreateMap<PrivateMessageDto, CreateOrUpdatePrivateMessageDto>();
             CreateMap<PrivateMessageDto, PrivateMessageInfoModel>();
-            CreateMap<CreatePrivateMessageInfoModel, CreateUpdatePrivateMessageDto>().Ignore(x => x.ExtraProperties);
+            CreateMap<CreatePrivateMessageInfoModel, CreateOrUpdatePrivateMessageDto>().Ignore(x => x.ExtraProperties);
         }
     }
 }

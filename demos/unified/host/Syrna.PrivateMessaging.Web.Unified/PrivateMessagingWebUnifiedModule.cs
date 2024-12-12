@@ -99,7 +99,8 @@ namespace Syrna.PrivateMessaging
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseIdentityServer();
+            //app.UseIdentityServer();
+            app.UseAbpOpenIddictValidation();
             app.UseAuthentication();
             app.UseAuthorization();
             if (MultiTenancyConsts.IsEnabled)

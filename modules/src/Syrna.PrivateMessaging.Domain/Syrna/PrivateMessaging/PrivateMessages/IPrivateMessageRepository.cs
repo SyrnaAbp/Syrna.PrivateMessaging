@@ -14,13 +14,13 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         Task<long> CountSendingAsync(Guid userId, bool unreadOnly = false,
             CancellationToken cancellationToken = default);
 
-        Task<IReadOnlyList<PrivateMessage>> GetListSendingAsync(Guid userId, int skipCount, int maxResultCount,
+        Task<IReadOnlyList<PrivateMessage>> GetListSendingAsync(Guid userId, int skipCount, int maxResultCount, string sorting,
             bool unreadOnly = false, CancellationToken cancellationToken = default);
 
         Task<long> CountReceivingAsync(Guid userId, bool unreadOnly = false,
             CancellationToken cancellationToken = default);
 
-        Task<IReadOnlyList<PrivateMessage>> GetListReceivingAsync(Guid userId, int skipCount, int maxResultCount,
+        Task<IReadOnlyList<PrivateMessage>> GetListReceivingAsync(Guid userId, int skipCount, int maxResultCount, string sorting,
             bool unreadOnly = false, CancellationToken cancellationToken = default);
     }
 }
