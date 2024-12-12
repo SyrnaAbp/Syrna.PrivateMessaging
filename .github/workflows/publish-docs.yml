@@ -2,8 +2,8 @@ name: publish to syrnaabp.io
 on:
   push:
     branches:
-      - master
-      - main
+      - masterx
+      - mainx
 jobs:
   publish:
     runs-on: ubuntu-latest
