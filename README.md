@@ -48,10 +48,13 @@ An abp application module that allows users to send private messages to each oth
 
 ### This project based on [EasyAbp PrivateMessaging](https://github.com/EasyAbp/PrivateMessaging)
 
-### Diffrences
+### Differences
 
 1. Demo project created for OpenIddict
 2. Demo project extended modules added
-x3. Blazor modules added
-
+3. Blazor modules added
+4. Inbox sorting appliyed
+5. Outbox sorting applyed
+6. Added create button to Toolbar dropdown menu
+7. Added ReadTime to Outbox 
 
