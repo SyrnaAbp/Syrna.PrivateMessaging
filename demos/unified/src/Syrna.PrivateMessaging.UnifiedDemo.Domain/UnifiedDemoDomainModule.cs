@@ -28,6 +28,7 @@ namespace Syrna.PrivateMessaging.UnifiedDemo;
 [DependsOn(typeof(AbpSettingManagementDomainModule))]
 [DependsOn(typeof(AbpTenantManagementDomainModule))]
 //app modules
+[DependsOn(typeof(PrivateMessagingDomainModule))]
 [DependsOn(typeof(UnifiedDemoDomainSharedModule))]
 public class UnifiedDemoDomainModule : AbpModule
 {

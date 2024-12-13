@@ -1,4 +1,5 @@
 ﻿@page "/PrivateMessaging/PrivateMessages/PrivateMessage/Inbox"
+@using Syrna.PrivateMessaging.Blazor.Components
 @using Syrna.PrivateMessaging.Localization
 @using Syrna.PrivateMessaging.PrivateMessages
 @using Syrna.PrivateMessaging.PrivateMessages.Dtos
@@ -23,7 +24,7 @@
     </CardHeader>
     <CardBody>
         @* ************************* DATA GRID ************************* *@
-        <AbpExtensibleDataGrid TItem="PrivateMessageViewModel"
+        <PmExtensibleDataGrid TItem="PrivateMessageViewModel"
                                Data="@Entities"
                                ReadData="@OnDataGridReadAsync"
                                TotalItems="@TotalCount"
@@ -31,7 +32,7 @@
                                PageSize="@PageSize"
                                CurrentPage="@CurrentPage"
                                Columns="@PrivateMessageTableColumns">
-        </AbpExtensibleDataGrid>
+        </PmExtensibleDataGrid>
     </CardBody>
 </Card>
 

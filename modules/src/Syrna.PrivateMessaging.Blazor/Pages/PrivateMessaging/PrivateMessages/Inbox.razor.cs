@@ -10,6 +10,7 @@ using Syrna.PrivateMessaging.Localization;
 using Syrna.PrivateMessaging.ObjectExtending;
 using Syrna.PrivateMessaging.PrivateMessages.Dtos;
 using Microsoft.AspNetCore.Authorization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Syrna.PrivateMessaging.Blazor.Pages.PrivateMessaging.PrivateMessages;
 
@@ -58,7 +59,7 @@ public partial class Inbox
 
     #region Details Modal
     protected DetailsModalComponent DetailsModalComponentRef;
-    public bool HasDetailsPermission { get; set; }
+    protected bool HasDetailsPermission { get; set; }
     private string DetailsPolicyName = PrivateMessagingPermissions.PrivateMessages.Default;
 
     protected virtual async Task OpenDetailsModalAsync(Guid id)
@@ -111,19 +112,22 @@ public partial class Inbox
                     {
                         Title = L["PrivateMessageFromUserName"],
                         Sortable = true,
-                        Data = nameof(PrivateMessageViewModel.FromUserName)
+                        Data = nameof(PrivateMessageViewModel.FromUserName),
+                        ValueConverter = data=>FormatCell(data,"FromUserName")
                     },
                     new TableColumn
                     {
                         Title = L["PrivateMessageTitle"],
                         Sortable = true,
-                        Data = nameof(PrivateMessageViewModel.Title)
+                        Data = nameof(PrivateMessageViewModel.Title),
+                        ValueConverter = data=>FormatCell(data,"Title")
                     },
                     new TableColumn
                     {
                         Title = L["PrivateMessageCreationTime"],
                         Sortable = true,
-                        Data = nameof(PrivateMessageViewModel.CreationTime)
+                        Data = nameof(PrivateMessageViewModel.CreationTime),
+                        ValueConverter = data=>FormatCell(data,"CreationTime")
                     },
             });
 
@@ -131,6 +135,20 @@ public partial class Inbox
             PrivateMessagingModuleExtensionConsts.EntityNames.PrivateMessage));
 
         await base.SetTableColumnsAsync();
+    }
+
+    private static string FormatCell(object data,string name)
+    {
+        var row = data.As<PrivateMessageViewModel>();
+        var cell = row.ReadTime;
+        var valueStr = name switch
+        {
+            "Title" => row.Title,
+            "CreationTime" => row.CreationTime.ToString("F"),
+            _ => row.FromUserName
+        };
+
+        return cell == null ? "<span class='bold'>" + valueStr + "</span>" : valueStr;
     }
 
     protected override string GetDeleteConfirmationMessage(PrivateMessageViewModel entity)
