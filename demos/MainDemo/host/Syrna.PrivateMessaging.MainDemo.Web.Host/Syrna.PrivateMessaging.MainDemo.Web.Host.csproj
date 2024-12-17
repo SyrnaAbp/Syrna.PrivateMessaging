@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<Import Project="..\..\..\..\common.props" />
+	<Import Project="..\..\..\..\configureawait.props" />
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<RootNamespace>Syrna.PrivateMessaging</RootNamespace>
+		<PreserveCompilationReferences>true</PreserveCompilationReferences>
+		<UserSecretsId>Syrna.PrivateMessaging-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileContext>..\..\..\..</DockerfileContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Serilog.AspNetCore" />
+		<PackageReference Include="Serilog.Sinks.Async" />
+		<PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" />
+
+		<PackageReference Include="Volo.Abp.Autofac" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.LeptonXLite" />
+		<PackageReference Include="Volo.Abp.AspNetCore.Serilog" />
+		<PackageReference Include="Volo.Abp.Swashbuckle" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Syrna.PrivateMessaging.MainDemo.HttpApi\Syrna.PrivateMessaging.MainDemo.HttpApi.csproj" />
+		<ProjectReference Include="..\..\src\Syrna.PrivateMessaging.MainDemo.Web\Syrna.PrivateMessaging.MainDemo.Web.csproj" />
+		<ProjectReference Include="..\..\src\Syrna.PrivateMessaging.MainDemo.Application\Syrna.PrivateMessaging.MainDemo.Application.csproj" />
+		<ProjectReference Include="..\..\src\Syrna.PrivateMessaging.MainDemo.EntityFrameworkCore\Syrna.PrivateMessaging.MainDemo.EntityFrameworkCore.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Pages\**\*.js">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Pages\**\*.css">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

@@ -39,35 +39,35 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrna.PrivateMessaging.Web"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrna.PrivateMessaging.HttpApi.Client.ConsoleTestApp", "modules\test\Syrna.PrivateMessaging.HttpApi.Client.ConsoleTestApp\Syrna.PrivateMessaging.HttpApi.Client.ConsoleTestApp.csproj", "{1EDCD6D4-DF3A-4E3B-ABB6-C0D0B373EAB8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrna.PrivateMessaging.Web.Unified", "demos\unified\host\Syrna.PrivateMessaging.Web.Unified\Syrna.PrivateMessaging.Web.Unified.csproj", "{3D872C41-E226-45C8-89C1-9D3DBD7C73F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Syrna.PrivateMessaging.Web.MainDemo", "demos\MainDemo\host\Syrna.PrivateMessaging.MainDemo.Web.Host\Syrna.PrivateMessaging.MainDemo.Web.Host.csproj", "{3D872C41-E226-45C8-89C1-9D3DBD7C73F2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{569DC619-56E0-4D70-A793-492C3E42854E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{CE0E2EF5-3584-4191-BF92-E576D43A5EE3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unified", "unified", "{13A816E6-1F4B-4DD8-9FDB-A49479F97F09}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MainDemo", "MainDemo", "{13A816E6-1F4B-4DD8-9FDB-A49479F97F09}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4EB94DD-4501-47C9-8BCF-2CE1A16C65BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Application", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Application\Syrna.PrivateMessaging.UnifiedDemo.Application.csproj", "{C2D8643D-45E7-41D5-A77E-20D568259348}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Application", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Application\Syrna.PrivateMessaging.MainDemo.Application.csproj", "{C2D8643D-45E7-41D5-A77E-20D568259348}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Application.Contracts", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Application.Contracts\Syrna.PrivateMessaging.UnifiedDemo.Application.Contracts.csproj", "{CA7C84D7-7649-4699-ADA2-C3952AF653F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Application.Contracts", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Application.Contracts\Syrna.PrivateMessaging.MainDemo.Application.Contracts.csproj", "{CA7C84D7-7649-4699-ADA2-C3952AF653F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.DbMigrator", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.DbMigrator\Syrna.PrivateMessaging.UnifiedDemo.DbMigrator.csproj", "{E2B8FE98-1E2A-41C6-A832-462C673F8372}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.DbMigrator", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.DbMigrator\Syrna.PrivateMessaging.MainDemo.DbMigrator.csproj", "{E2B8FE98-1E2A-41C6-A832-462C673F8372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Domain", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Domain\Syrna.PrivateMessaging.UnifiedDemo.Domain.csproj", "{E8FEF296-A7AF-4019-90CC-658B8414543B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Domain", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Domain\Syrna.PrivateMessaging.MainDemo.Domain.csproj", "{E8FEF296-A7AF-4019-90CC-658B8414543B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Domain.Shared", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Domain.Shared\Syrna.PrivateMessaging.UnifiedDemo.Domain.Shared.csproj", "{3390D429-9FDC-4CC4-8B5A-D596B2836BF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Domain.Shared", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Domain.Shared\Syrna.PrivateMessaging.MainDemo.Domain.Shared.csproj", "{3390D429-9FDC-4CC4-8B5A-D596B2836BF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.EntityFrameworkCore", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.EntityFrameworkCore\Syrna.PrivateMessaging.UnifiedDemo.EntityFrameworkCore.csproj", "{06A20744-EB3A-41F9-B7B2-E471457C440B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.EntityFrameworkCore", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.EntityFrameworkCore\Syrna.PrivateMessaging.MainDemo.EntityFrameworkCore.csproj", "{06A20744-EB3A-41F9-B7B2-E471457C440B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.HttpApi", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.HttpApi\Syrna.PrivateMessaging.UnifiedDemo.HttpApi.csproj", "{4E7E48F2-CB7D-425F-A4FD-88EFEF123E2D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.HttpApi", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.HttpApi\Syrna.PrivateMessaging.MainDemo.HttpApi.csproj", "{4E7E48F2-CB7D-425F-A4FD-88EFEF123E2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.HttpApi.Client", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.HttpApi.Client\Syrna.PrivateMessaging.UnifiedDemo.HttpApi.Client.csproj", "{0FA97A9C-265E-46C9-8AD6-21EC4C368355}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.HttpApi.Client", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.HttpApi.Client\Syrna.PrivateMessaging.MainDemo.HttpApi.Client.csproj", "{0FA97A9C-265E-46C9-8AD6-21EC4C368355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.SqlServer.EntityFrameworkCore", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.SqlServer.EntityFrameworkCore\Syrna.PrivateMessaging.UnifiedDemo.SqlServer.EntityFrameworkCore.csproj", "{3BEBAA0E-2FF2-4D10-980A-A516290B99D1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.SqlServer.EntityFrameworkCore", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.SqlServer.EntityFrameworkCore\Syrna.PrivateMessaging.MainDemo.SqlServer.EntityFrameworkCore.csproj", "{3BEBAA0E-2FF2-4D10-980A-A516290B99D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Web", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Web\Syrna.PrivateMessaging.UnifiedDemo.Web.csproj", "{D954281A-9850-4BD6-B359-1E448F041281}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Web", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Web\Syrna.PrivateMessaging.MainDemo.Web.csproj", "{D954281A-9850-4BD6-B359-1E448F041281}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items", ".Solution Items", "{CDEBDEA5-6A08-4F59-9385-4E7440BCCBE7}"
 	ProjectSection(SolutionItems) = preProject
@@ -95,13 +95,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.Blaz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.Blazor.WebAssembly", "modules\src\Syrna.PrivateMessaging.Blazor.WebAssembly\Syrna.PrivateMessaging.Blazor.WebAssembly.csproj", "{6B0B3652-6B16-4999-94E7-AF114BDB4949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Blazor", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Blazor\Syrna.PrivateMessaging.UnifiedDemo.Blazor.csproj", "{21F8C301-E993-4809-8142-D2EC19A76511}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Blazor", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Blazor\Syrna.PrivateMessaging.MainDemo.Blazor.csproj", "{21F8C301-E993-4809-8142-D2EC19A76511}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Blazor.Server", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Blazor.Server\Syrna.PrivateMessaging.UnifiedDemo.Blazor.Server.csproj", "{48646A34-9264-429A-B34A-2B1D6BEED491}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Blazor.Server", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Blazor.Server\Syrna.PrivateMessaging.MainDemo.Blazor.Server.csproj", "{48646A34-9264-429A-B34A-2B1D6BEED491}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Blazor.WebAssembly", "demos\unified\src\Syrna.PrivateMessaging.UnifiedDemo.Blazor.WebAssembly\Syrna.PrivateMessaging.UnifiedDemo.Blazor.WebAssembly.csproj", "{DFF4A148-E74F-4ADD-BB21-9F2B0754632C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Blazor.WebAssembly", "demos\MainDemo\src\Syrna.PrivateMessaging.MainDemo.Blazor.WebAssembly\Syrna.PrivateMessaging.MainDemo.Blazor.WebAssembly.csproj", "{DFF4A148-E74F-4ADD-BB21-9F2B0754632C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.UnifiedDemo.Blazor.Server.Host", "demos\unified\host\Syrna.PrivateMessaging.UnifiedDemo.Blazor.Server.Host\Syrna.PrivateMessaging.UnifiedDemo.Blazor.Server.Host.csproj", "{3DD4DB43-0C8B-41EB-B5E1-09F8DF4E8835}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Syrna.PrivateMessaging.MainDemo.Blazor.Server.Host", "demos\MainDemo\host\Syrna.PrivateMessaging.MainDemo.Blazor.Server.Host\Syrna.PrivateMessaging.MainDemo.Blazor.Server.Host.csproj", "{3DD4DB43-0C8B-41EB-B5E1-09F8DF4E8835}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
