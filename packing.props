@@ -5,12 +5,12 @@
 		<AbpProjectType>module</AbpProjectType>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>Syrna Team</Authors>
-		<Description>An abp module that dynamically creates menu items for ABP UI projects in runtime.</Description>
+		<Description>An abp application module that allows users to send private messages to each other.</Description>
 		<PackageReadmeFile>.\README.md</PackageReadmeFile>
 		<PackageIcon>.\logo.png</PackageIcon>
-		<PackageProjectUrl>https://github.com/Syrna/Abp.DynamicMenu</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Syrna/Abp.DynamicMenu</RepositoryUrl>
-		<PackageTags>abp module syrna dynamicmenu menu dynamic runtime</PackageTags>
+		<PackageProjectUrl>https://github.com/SyrnaAbp/Syrna.PrivateMessaging</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/SyrnaAbp/Syrna.PrivateMessaging</RepositoryUrl>
+		<PackageTags>An abp application module that allows users to send private messages to each other syrna alpha</PackageTags>
 		<Company>Syrna</Company>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>

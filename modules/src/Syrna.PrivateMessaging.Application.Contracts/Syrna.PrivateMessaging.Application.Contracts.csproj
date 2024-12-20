@@ -10,6 +10,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Syrna\PrivateMessaging\PrivateMessages\Dtos\CreatePrivateMessageInfoModel.cs" />
+	  <Compile Remove="Syrna\PrivateMessaging\PrivateMessages\Dtos\PrivateMessageInfoModel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Volo.Abp.Ddd.Application.Contracts" />
 		<PackageReference Include="Volo.Abp.Authorization" />
 		<ProjectReference Include="..\Syrna.PrivateMessaging.Domain.Shared\Syrna.PrivateMessaging.Domain.Shared.csproj" />

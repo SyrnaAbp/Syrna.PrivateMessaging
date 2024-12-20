@@ -27,29 +27,29 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         }
 
         [HttpGet]
-        public Task<PagedResultDto<PrivateMessageDto>> GetListAsync(PagedResultRequestDto input)
+        public Task<PagedResultDto<PrivateMessageDto>> GetListAsync(GetPrivateMessageListInput input)
         {
             return _service.GetListAsync(input);
         }
 
         [HttpGet]
         [Route("unread")]
-        public Task<PagedResultDto<PrivateMessageDto>> GetListUnreadAsync(PagedResultRequestDto input)
+        public Task<PagedResultDto<PrivateMessageDto>> GetListUnreadAsync(GetPrivateMessageListInput input)
         {
             return _service.GetListUnreadAsync(input);
         }
 
         [HttpGet]
         [Route("sent")]
-        public Task<PagedResultDto<PrivateMessageDto>> GetListSentAsync(PagedResultRequestDto input)
+        public Task<PagedResultDto<PrivateMessageDto>> GetListSentAsync(GetPrivateMessageListInput input)
         {
             return _service.GetListSentAsync(input);
         }
 
         [HttpDelete]
-        public Task DeleteAsync(IEnumerable<Guid> ids)
+        public Task DeleteManyAsync(IEnumerable<Guid> ids)
         {
-            return _service.DeleteAsync(ids);
+            return _service.DeleteManyAsync(ids);
         }
 
         [HttpPost]
@@ -60,7 +60,7 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         }
 
         [HttpPost]
-        public Task<PrivateMessageDto> CreateAsync(CreateUpdatePrivateMessageDto input)
+        public Task<PrivateMessageDto> CreateAsync(CreatePrivateMessageDto input)
         {
             return _service.CreateAsync(input);
         }
@@ -70,6 +70,18 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         public Task<PrivateMessageDto> CreateByUserIdAsync(CreatePrivateMessageByUserIdDto input)
         {
             return _service.CreateByUserIdAsync(input);
+        }
+
+        public Task<PrivateMessageDto> UpdateAsync(Guid id, UpdatePrivateMessageDto input)
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public Task DeleteAsync(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

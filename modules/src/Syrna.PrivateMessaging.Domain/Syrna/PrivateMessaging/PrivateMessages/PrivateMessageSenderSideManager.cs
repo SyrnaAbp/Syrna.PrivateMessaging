@@ -41,11 +41,11 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         }
 
         public virtual async Task<IReadOnlyList<PrivateMessage>> GetListAsync(Guid userId, int skipCount,
-            int maxResultCount)
+            int maxResultCount, string sorting)
         {
             using (_dataFilter.Disable<ISoftDelete>())
             {
-                return await _repository.GetListSendingAsync(userId, skipCount, maxResultCount);
+                return await _repository.GetListSendingAsync(userId, skipCount, maxResultCount, sorting);
             }
         }
 

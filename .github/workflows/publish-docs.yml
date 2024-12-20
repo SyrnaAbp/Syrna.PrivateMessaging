@@ -1,9 +1,9 @@
-name: publish to easyabp.io
+name: publish to syrnaabp.io
 on:
   push:
     branches:
-      - master
-      - main
+      - masterx
+      - mainx
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -25,8 +25,8 @@ jobs:
         id: change
         run: |
           ls
-          git clone https://github.com/EasyAbp/easyabp.github.io
-          cd easyabp.github.io
+          git clone https://github.com/SyrnaAbp/syrnaabp.github.io
+          cd syrnaabp.github.io
           rm -rf docs/modules/${{ github.event.repository.name }}
           rm -rf docs/.vuepress/public/modules/${{ github.event.repository.name }}
           cp -rf ../docs/ docs/modules/${{ github.event.repository.name }}
@@ -37,7 +37,7 @@ jobs:
         if: steps.change.outputs.diff
         run: |
           ls
-          cd easyabp.github.io
+          cd syrnaabp.github.io
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Update the docs of ${{ github.event.repository.name }}" -a
@@ -45,6 +45,6 @@ jobs:
         if: steps.change.outputs.diff
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.EASYABP_IO_ACCESS_TOKEN }}
-          repository: EasyAbp/easyabp.github.io
-          directory: easyabp.github.io
+          github_token: ${{ secrets.SYRNAABP_IO_ACCESS_TOKEN }}
+          repository: SyrnaAbp/syrnaabp.github.io
+          directory: syrnaabp.github.io

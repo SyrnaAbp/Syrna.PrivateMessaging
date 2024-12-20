@@ -36,8 +36,8 @@ namespace Syrna.PrivateMessaging.PrivateMessageNotifications
 
                 await AuthorizationService.CheckAsync(notification,
                     PrivateMessagingPermissions.PrivateMessageNotifications.Delete);
-                
-                await _repository.DeleteAsync(notification);
+
+                await _repository.DeleteAsync(notification, true);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Syrna.PrivateMessaging.PrivateMessageNotifications
 
             var list = await _repository.GetListByUserIdAsync(CurrentUser.GetId(), input.SkipCount,
                 input.MaxResultCount);
-            
+
             return new PagedResultDto<PrivateMessageNotificationDto>(count,
                 ObjectMapper.Map<IReadOnlyList<PrivateMessageNotification>, IReadOnlyList<PrivateMessageNotificationDto>>(list));
         }

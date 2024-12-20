@@ -1,0 +1,156 @@
+﻿@page "/PrivateMessaging/PrivateMessages/PrivateMessage/Outbox"
+@using Syrna.PrivateMessaging.Localization
+@using Syrna.PrivateMessaging.PrivateMessages
+@using Syrna.PrivateMessaging.PrivateMessages.Dtos
+@using Volo.Abp.BlazoriseUI.Components
+@using Microsoft.AspNetCore.Authorization
+@using Syrna.PrivateMessaging.Authorization
+@using Syrna.PrivateMessaging.Blazor.Pages.PrivateMessaging.InfoModels
+@using Volo.Abp.BlazoriseUI.Components.ObjectExtending
+@using Volo.Abp.AspNetCore.Components.Web.Theming.Layout
+@inject AbpBlazorMessageLocalizerHelper<PrivateMessagingResource> LH
+@inject NavigationManager Navigation
+
+@attribute [Authorize(PrivateMessagingPermissions.PrivateMessages.Default)]
+@inherits AbpCrudPageBase<IPrivateMessageAppService, PrivateMessageDto, PrivateMessageDto,Guid, GetPrivateMessageListInput, CreatePrivateMessageDto, UpdatePrivateMessageDto,PrivateMessageViewModel, CreatePrivateMessageViewModel, DetailsPrivateMessageViewModel>
+<Card>
+    <CardHeader>
+        @* ************************* PAGE HEADER ************************* *@
+        <PageHeader Title="@L["PrivateMessageOutbox"]"
+                    BreadcrumbItems="@BreadcrumbItems"
+                    Toolbar="@Toolbar">
+        </PageHeader>
+    </CardHeader>
+    <CardBody>
+        @* ************************* DATA GRID ************************* *@
+        <AbpExtensibleDataGrid TItem="PrivateMessageViewModel"
+                               Data="@Entities"
+                               ReadData="@OnDataGridReadAsync"
+                               TotalItems="@TotalCount"
+                               ShowPager="true"
+                               PageSize="@PageSize"
+                               CurrentPage="@CurrentPage"
+                               Columns="@PrivateMessageTableColumns">
+        </AbpExtensibleDataGrid>
+    </CardBody>
+</Card>
+
+@* ************************* CREATE MODAL ************************* *@
+@if (HasCreatePermission)
+{
+    <Modal @ref="CreateModal" Closing="@ClosingCreateModal">
+        <ModalContent Centered="true">
+            <Form>
+                <ModalHeader>
+                    <ModalTitle>@L["NewPrivateMessage"]</ModalTitle>
+                    <CloseButton Clicked="CloseCreateModalAsync" />
+                </ModalHeader>
+                <ModalBody>
+                    <Validations @ref="@CreateValidationsRef" Model="@NewEntity" ValidateOnLoad="false">
+                        <Validation MessageLocalizer="@LH.Localize">
+                            <Field>
+                                <FieldLabel>@L["PrivateMessageToUserName"]</FieldLabel>
+                                <TextEdit @bind-Text="@NewEntity.ToUserName" Autofocus="true">
+                                    <Feedback>
+                                        <ValidationError />
+                                    </Feedback>
+                                </TextEdit>
+                            </Field>
+                        </Validation>
+                        <Validation MessageLocalizer="@LH.Localize">
+                            <Field>
+                                <FieldLabel>@L["PrivateMessageTitle"]</FieldLabel>
+                                <TextEdit @bind-Text="@NewEntity.Title" Autofocus="true">
+                                    <Feedback>
+                                        <ValidationError />
+                                    </Feedback>
+                                </TextEdit>
+                            </Field>
+                        </Validation>
+                        <Validation MessageLocalizer="@LH.Localize">
+                            <Field>
+                                <FieldLabel>@L["PrivateMessageContent"]</FieldLabel>
+                                <MemoEdit @bind-Text="@NewEntity.Content" Autofocus="true" Rows="4">
+                                    <Feedback>
+                                        <ValidationError />
+                                    </Feedback>
+                                </MemoEdit>
+                            </Field>
+                        </Validation>
+                        <ExtensionProperties TEntityType="CreatePrivateMessageViewModel" TResourceType="PrivateMessagingResource" Entity="@NewEntity" LH="@LH" ModalType="ExtensionPropertyModalType.CreateModal" />
+                    </Validations>
+                </ModalBody>
+                <ModalFooter>
+                    <Button Color="Color.Primary" Outline Clicked="CloseCreateModalAsync">@L["Cancel"]</Button>
+                    <SubmitButton Clicked="@CreateEntityAsync" />
+                </ModalFooter>
+            </Form>
+        </ModalContent>
+    </Modal>
+}
+@* ************************* EDIT MODAL ************************* *@
+@if (HasUpdatePermission)
+{
+    <Modal @ref="EditModal" Closing="@ClosingEditModal">
+        <ModalContent Centered="true">
+            <Form>
+                <ModalHeader>
+                    <ModalTitle>@L["Edit"]</ModalTitle>
+                    <CloseButton Clicked="CloseEditModalAsync" />
+                </ModalHeader>
+                <ModalBody>
+                    <input type="hidden" name="ConcurrencyStamp" @bind-value="EditingEntity.ConcurrencyStamp" />
+                    <Field>
+                        <FieldLabel>@L["PrivateMessageFromUserName"]</FieldLabel>
+                        <TextEdit @bind-Text="EditingEntity.FromUserName" Autofocus="true" Disabled="true">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["PrivateMessageToUserName"]</FieldLabel>
+                        <TextEdit @bind-Text="EditingEntity.ToUserName" Autofocus="true" Disabled="true">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["PrivateMessageCreationTime"]</FieldLabel>
+                        <DateEdit @bind-Date="EditingEntity.CreationTime" Autofocus="true" Disabled="true">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </DateEdit>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["PrivateMessageTitle"]</FieldLabel>
+                        <TextEdit @bind-Text="EditingEntity.Title" Autofocus="true" Disabled="true">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </TextEdit>
+                    </Field>
+                    <Field>
+                        <FieldLabel>@L["PrivateMessageContent"]</FieldLabel>
+                        <MemoEdit @bind-Text="@EditingEntity.Content" Autofocus="true" Rows="4" Disabled="true">
+                            <Feedback>
+                                <ValidationError />
+                            </Feedback>
+                        </MemoEdit>
+                    </Field>
+                    <ExtensionProperties TEntityType="DetailsPrivateMessageViewModel" TResourceType="PrivateMessagingResource" Entity="@EditingEntity" LH="@LH" ModalType="ExtensionPropertyModalType.EditModal" />
+                </ModalBody>
+                <ModalFooter>
+                    <Button Color="Color.Primary" Outline Clicked="CloseEditModalAsync">@L["Cancel"]</Button>
+                    <SubmitButton Clicked="@UpdateEntityAsync" />
+                </ModalFooter>
+            </Form>
+        </ModalContent>
+    </Modal>
+}
+@if (HasDetailsPermission)
+{
+    <DetailsModalComponent @ref="DetailsModalComponentRef" />
+}

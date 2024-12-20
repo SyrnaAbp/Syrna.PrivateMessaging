@@ -1,0 +1,53 @@
+﻿@using Microsoft.Extensions.Localization
+@using Syrna.PrivateMessaging.Blazor.Pages.PrivateMessaging.InfoModels
+@using Syrna.PrivateMessaging.Localization
+@using Syrna.PrivateMessaging.PrivateMessages
+@using Volo.Abp.BlazoriseUI.Components
+@using Volo.Abp.BlazoriseUI.Components.ObjectExtending
+@inject AbpBlazorMessageLocalizerHelper<PrivateMessagingResource> LH
+@inherits Volo.Abp.AspNetCore.Components.AbpComponentBase
+<Modal @ref="DetailsModalRef" Closing="@ClosingDetailsModal">
+    <ModalContent Centered="true">
+        <Form>
+            <ModalHeader>
+                <ModalTitle>@L["PrivateMessage"]</ModalTitle>
+                <CloseButton Clicked="CloseDetailsModalAsync" />
+            </ModalHeader>
+            <ModalBody>
+                <input type="hidden" name="ConcurrencyStamp" @bind-value="DetailsEntity.ConcurrencyStamp" />
+                <Field>
+                    <FieldLabel>@L["PrivateMessageFromUserName"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.FromUserName" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["PrivateMessageToUserName"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.ToUserName" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["PrivateMessageCreationTime"]</FieldLabel>
+                    <DateEdit @bind-Date="DetailsEntity.CreationTime" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["PrivateMessageTitle"]</FieldLabel>
+                    <TextEdit @bind-Text="DetailsEntity.Title" Disabled="true" />
+                </Field>
+                <Field>
+                    <FieldLabel>@L["PrivateMessageContent"]</FieldLabel>
+                    <MemoEdit @bind-Text="@DetailsEntity.Content" Rows="4" Disabled="true" />
+                </Field>
+                <ExtensionProperties TEntityType="DetailsPrivateMessageViewModel" TResourceType="PrivateMessagingResource" Entity="@DetailsEntity" LH="@LH" ModalType="ExtensionPropertyModalType.EditModal" />
+            </ModalBody>
+            <ModalFooter>
+                @if (!IsSystemUserMessage)
+                {
+                    <Button Color="Color.Primary" Clicked="ReplyAsync">@L["Reply"]</Button>
+                }
+                <Button Color="Color.Default" Clicked="CloseDetailsModalAsync">@L["Cancel"]</Button>
+            </ModalFooter>
+        </Form>
+    </ModalContent>
+</Modal>
+@if (HasCreatePermission)
+{
+    <CreateModalComponent @ref="CreateModalComponentRef" Saved="Saved" />
+}

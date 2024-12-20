@@ -7,9 +7,21 @@ using Syrna.PrivateMessaging.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
+using Volo.Abp;
 
 namespace Syrna.PrivateMessaging.PrivateMessages
 {
+    public static class LinqExt
+    {
+        public static IQueryable<T> OrderByIff<T>(this IQueryable<T> query, bool condition, string sorting)
+        {
+            Check.NotNull(query, nameof(query));
+            return condition
+                ? DynamicQueryableExtensions.OrderBy(query, sorting)
+                : query;
+        }
+    }
     public class PrivateMessageRepository : EfCoreRepository<IPrivateMessagingDbContext, PrivateMessage, Guid>,
         IPrivateMessageRepository
     {
@@ -35,11 +47,13 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         }
 
         public virtual async Task<IReadOnlyList<PrivateMessage>> GetListSendingAsync(Guid userId, int skipCount,
-            int maxResultCount, bool unreadOnly = false, CancellationToken cancellationToken = default)
+            int maxResultCount, string sorting, bool unreadOnly = false, CancellationToken cancellationToken = default)
         {
             return await (await GetQueryableAsync())
                 .Where(m => m.FromUserId == userId && (!unreadOnly || !m.ReadTime.HasValue))
-                .OrderByDescending(m => m.CreationTime).PageBy(skipCount, maxResultCount)
+                //.OrderByDescending(m => m.CreationTime)
+                .OrderByIff(!sorting.IsNullOrEmpty(), sorting)
+                .PageBy(skipCount, maxResultCount)
                 .ToListAsync(cancellationToken);
         }
 
@@ -52,12 +66,14 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         }
 
         public virtual async Task<IReadOnlyList<PrivateMessage>> GetListReceivingAsync(Guid userId, int skipCount,
-            int maxResultCount, bool unreadOnly = false, CancellationToken cancellationToken = default)
+            int maxResultCount, string sorting, bool unreadOnly = false, CancellationToken cancellationToken = default)
         {
             return await (await GetQueryableAsync())
                 .Where(m => m.ToUserId == userId && (!unreadOnly || !m.ReadTime.HasValue))
-                .OrderByDescending(m => m.CreationTime).PageBy(skipCount, maxResultCount)
-                .ToListAsync(cancellationToken);
+                 //.OrderByDescending(m => m.CreationTime)
+                 .OrderByIff(!sorting.IsNullOrEmpty(), sorting)
+                 .PageBy(skipCount, maxResultCount)
+               .ToListAsync(cancellationToken);
         }
     }
 }

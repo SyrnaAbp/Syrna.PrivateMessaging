@@ -252,7 +252,4 @@ paket-files/
 *.sln.iml
 
 # PrivateMessaging
-host/EasyAbp.PrivateMessaging.IdentityServer/Logs/logs.txt
-host/EasyAbp.PrivateMessaging.HttpApi.Host/Logs/logs.txt
-host/EasyAbp.PrivateMessaging.Web.Host/Logs/logs.txt
-host/EasyAbp.PrivateMessaging.Web.Unified/Logs/logs.txt
+**/logs/logs.txt

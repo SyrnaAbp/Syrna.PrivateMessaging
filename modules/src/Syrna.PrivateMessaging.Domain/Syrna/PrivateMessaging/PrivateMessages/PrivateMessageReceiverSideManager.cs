@@ -63,9 +63,9 @@ namespace Syrna.PrivateMessaging.PrivateMessages
         }
 
         public virtual async Task<IReadOnlyList<PrivateMessage>> GetListAsync(Guid userId, int skipCount,
-            int maxResultCount, bool unreadOnly = false)
+            int maxResultCount, string sorting, bool unreadOnly = false)
         {
-            return await _repository.GetListReceivingAsync(userId, skipCount, maxResultCount, unreadOnly);
+            return await _repository.GetListReceivingAsync(userId, skipCount, maxResultCount,sorting, unreadOnly);
         }
 
         public virtual async Task DeleteAsync(PrivateMessage privateMessage)
